@@ -80,10 +80,9 @@ a:link {
 }
 
 .mdl-mini-footer {
-    margin-top: 70px;
     padding-bottom: 100px;
+    background-color: #ffffff;
     align-items: center;
-    background-color: #FFFFFF;
     box-sizing: border-box;
 }
 
@@ -100,6 +99,7 @@ a:link {
     height: auto;
 }
 
+
 .social-btn {
     background-position: center;
     background-size: contain;
@@ -114,15 +114,23 @@ a:link {
 }
 
 .social-btn__twitter {
-    background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_twitter_black_24dp.png');
-}
-
-.social-btn__blogger {
-    background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_facebook_black_24dp.png');
+    background-image: url(../images/icons/twitter.svg);
 }
 
 .social-btn__gplus {
-    background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_gplus_black_24dp.png');
+    background-image: url(../images/icons/google-plus.svg);
+}
+
+.social-btn__instagram {
+    background-image: url(../images/icons/instagram.svg);
+}
+
+.social-btn__linkedin {
+    background-image: url(../images/icons/linkedin.svg);
+}
+
+.social-btn__github {
+    background-image: url(../images/icons/github-box.svg);
 }
 
 .social-btn__share {
@@ -142,21 +150,54 @@ a:link {
     font-size: 17px;
 }
 
+.hide { 
+    max-height: 0;
+    transition: max-height 0.3s ease-in;
+    overflow: hidden;
+}
+
 .show {
-    display: block;
+    max-height: 500px;
+    transition: max-height 0.3s ease-in;
 }
 
-.hide {
-    display: none;
+.text-initial{
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    transition: all 0.3s ease-in;
 }
 
-main {
-    background-color: #424242;
+.text-after{
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.3s ease-in;
+}
+
+.mdl-layout__content{
+    background-color: $colorGrey800;
+}
+
+.content-area__posts{
+
+}
+
+.mdl-layout__container{
+    
 }
 
 .total-area {
     display: flex;
     padding: 25px;
+}
+
+.contact-bg {
+    margin-top: 200px;
+    background-color: $colorGrey300;
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    display: flex;
 }
 
 @media all and (min-width: 990px) {

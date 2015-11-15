@@ -6,16 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Carl Sim">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>CalcuTip - Tipping Calculator</title>
-
     <!--Material Design Lite-->
     <link rel="stylesheet" href="styles/material.min.css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
     <!-- Page styles -->
     <link rel="stylesheet" href="./styles/main.css" media="all">
-
     <!-- Tile color for Win8 -->
     <meta name="msapplication-TileColor" content="#424242">
     <!-- Add to homescreen for Chrome on Android -->
@@ -34,24 +30,34 @@
 <body>
     <div class="mdl-layout mdl-js-layout">
         <main class="mdl-layout__content">
-            <div class="total-area card-container">
-                <div class="total-text mdl-color-text--grey-50">
-                    <div class="subhead-text">Total Tip</div>
-                    <h1 id="tipTotalWithoutTax"></h1>
-        			
-                    <div id="total-more-area" class="hide">
-                    	<div class="section-separator"></div>
-						<p>Overall Total</p>
-                    	<h5 id="calcTotalWithoutTax"></h5>
+            <section class="content-area__posts">
+                <div class="total-area card-container">
+                    <div class="total-text mdl-color-text--grey-50">
+                        <div class="subhead-text">Total Tip</div>
+                        <h1 id="tip-total-without-tax"></h1>
+                        <!--Hidden area-->
+                        <div id="total-more-area" class="">
+                            <div class="section-separator"></div>
+                            <p>Overall Total</p>
+                            <h5 id="calcTotalWithoutTax"></h5>
+                            <div class="section-separator"></div>
+                            <p>Tax</p>
+                            <h5 id="taxAmount"></h5>
+                            <div class="section-separator"></div>
+                            <p>Tip (with tax included)</p>
+                            <h5 id="tipTotalWithTax"></h5>
+                            <div class="section-separator"></div>
+                            <p>Overall (with tax included)</p>
+                            <h5 id="calcTotalWithTax"></h5>
+                        </div>
+                        <!--End of hidden area-->
+                        <a id="total-more-button" href="#" class="mdl-color-text--grey-500">Full bill info</a>
                     </div>
-                    <a id="total-more-button" href="#" class="mdl-color-text--grey-500">Full bill info</a>
                 </div>
-            </div>
-            <div class="mdl-grid card-container">
-                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-                    <div class="mdl-card__supporting-text">
-                        <div class="info-area">
-                            <form action="#">
+                <div class="mdl-grid card-container">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--4dp">
+                        <div class="mdl-card__supporting-text">
+                            <div class="info-area">
                                 <div class="subhead-text">Enter the price on your bill</div>
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input id="accumulatedTotal" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="22.60" />
@@ -65,8 +71,9 @@
                                     <label class="mdl-textfield__label" for="tip">Tip</label>
                                     <span class="mdl-textfield__error">Input is not a number!</span>
                                 </div>
-                                <div id="info-more-area" class="hide">
-                                	<div class="section-separator"></div>
+                                <!--Hidden area-->
+                                <div id="info-more-area" class="">
+                                    <div class="section-separator"></div>
                                     <div class="subhead-text"># of People</div>
                                     <div class="mdl-textfield mdl-js-textfield">
                                         <input id="numOfPeople" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" value="1" />
@@ -81,28 +88,48 @@
                                         <span class="mdl-textfield__error">Input is not a number!</span>
                                     </div>
                                 </div>
-                            </form>
-                            <a id="info-more-button" href="#">More</a>
+                                <!--End of hidden area-->
+                                <a id="info-more-button" href="#">More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="mdl-mini-footer">
+            </section>
+            <section id="contact">
+                <div class="contact-bg">
+                    <div class="contact-text">
+                        <div class="section-spacer"></div>
+                        <div>
+                            <a href='https://twitter.com/carlsimcity' target="_blank">
+                                <button class='mdl-mini-footer__social-btn social-btn social-btn__twitter'></button>
+                            </a>
+                            <a href='https://plus.google.com/+CarlSim/posts' target="_blank">
+                                <button class="mdl-mini-footer__social-btn social-btn social-btn__gplus"></button>
+                            </a>
+                            <a href='https://instagram.com/simulatron/' target="_blank">
+                                <button class="mdl-mini-footer__social-btn social-btn social-btn__instagram"></button>
+                            </a>
+                            <a href='https://github.com/carlsim' target="_blank">
+                                <button class="mdl-mini-footer__social-btn social-btn social-btn__github"></button>
+                            </a>
+                            <a href='https://ca.linkedin.com/pub/carl-sim/20/80a/aa4' target="_blank">
+                                <button class="mdl-mini-footer__social-btn social-btn social-btn__linkedin"></button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="mdl-mini-footer mdl-color-text--grey-700">
                 <div class="mdl-mini-footer__left-section">
                     &copy; 2015 Carl Sim
                 </div>
                 <div class="mdl-mini-footer__right-section">
-                    <a href="https://twitter.com/carlsimcity" target="_blank">
-                        <button class='mdl-mini-footer__social-btn social-btn social-btn__twitter'></button>
-                    </a>
-                    <a href='https://plus.google.com/+CarlSim/posts' target="_blank">
-                        <button class="mdl-mini-footer__social-btn social-btn social-btn__gplus"></button>
-                    </a>
                 </div>
             </footer>
         </main>
     </div>
     <!-- build:js scripts/combined.js -->
+    <script type="text/javascript" src="./scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="./scripts/main.js"></script>
     <script type="text/javascript" src="./scripts/material.js"></script>
     <!-- endbuild -->

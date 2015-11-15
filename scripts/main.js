@@ -42,6 +42,7 @@ function calcTotalWithoutTax(total, finalTipWithoutTax, numOfPeople) {
  *  Overall calculation done with the application
  *
  **/
+
 function calculation() {
     /**
      *
@@ -53,10 +54,20 @@ function calculation() {
      *  tip - Tip percentage speicifed by the user. .01 to make the number a decimal number (eg 10% tip = 0.10)
      *
      **/
-    var tax = parseFloat(document.getElementById('tax').value * 0.01);
-    var total = parseFloat(document.getElementById('accumulatedTotal').value);
-    var numOfPeople = parseInt(document.getElementById('numOfPeople').value);
-    var tip = parseFloat(document.getElementById('tip').value);
+    var total = parseFloat($('#accumulatedTotal').val());
+    var tax = parseFloat($('#tax').val() * 0.01);
+    var numOfPeople = parseInt($('#numOfPeople').val());
+    var tip = parseFloat($('#tip').val());
+
+    /**
+    *
+    *   Check to see if total field is empty
+    *
+    */
+    if(isNaN(total)){
+        console.log('total = 0');
+        total = 0;
+    }
 
     tip *= 0.01;
     console.log("Tax: " + tax);
@@ -79,11 +90,45 @@ function calculation() {
     var finalCalcTotalWithTax = calcTotalWithTax(total, finalTipWithTax, numOfPeople);
     var finalCalcTotalWithoutTax = calcTotalWithoutTax(total, finalTipWithoutTax, numOfPeople);
 
-    //document.getElementById('taxAmount').textContent = "$" + finalTax.toFixed(2);
-    //document.getElementById('tipTotalWithTax').textContent = "$" + finalTipWithTax.toFixed(2);
-    document.getElementById('tipTotalWithoutTax').textContent = "$" + finalTipWithoutTax.toFixed(2);
-    //document.getElementById('calcTotalWithTax').textContent = "$" + finalCalcTotalWithTax.toFixed(2);
-    document.getElementById('calcTotalWithoutTax').textContent = "$" + finalCalcTotalWithoutTax.toFixed(2);
+    $('#taxAmount').text("$" + finalTax.toFixed(2));
+    $('#tipTotalWithTax').text("$" + finalTipWithTax.toFixed(2));
+    $('#tip-total-without-tax').text("$" + finalTipWithoutTax.toFixed(2));
+    $('#calcTotalWithTax').text("$" + finalCalcTotalWithTax.toFixed(2));
+    $('#calc-total-without-tax').text("$" + finalCalcTotalWithoutTax.toFixed(2));
+}
+
+function init(){
+    console.log("in init()");
+    $('#total-more-area').addClass(
+        'hide'
+    );
+    $('#info-more-area').addClass(
+        'hide'
+    );
+    
+    $('#total-more-button').click(function(){
+        if($('#total-more-area').hasClass('hide')){
+            $('#total-more-area').removeClass('hide').addClass('show');
+            $('#total-more-button').text('Less bill info');
+            console.log("clicked show more info");
+        }else if($('#total-more-area').hasClass('show')){
+            
+            $('#total-more-area').removeClass('show').addClass('hide');
+            $('#total-more-button').text('Full bill info');
+            console.log("clicked show less info");
+        }
+    });
+
+    $('#info-more-button').click(function(){
+        if($('#info-more-area').hasClass('hide')){
+            $('#info-more-area').removeClass('hide').addClass('show');
+            $('#info-more-button').text('Less');
+        }else if($('#info-more-area').hasClass('show')){
+            
+            $('#info-more-area').removeClass('show').addClass('hide');
+            $('#info-more-button').text('More');
+        }
+    });
 }
 
 /**
@@ -91,44 +136,23 @@ function calculation() {
  *  When the "Submit" id (usually a button) is clicked
  *
  **/
-window.onload = function(){
-  calculation();
-
-    document.getElementById('total-more-button').onclick = function(event){
-        if(document.getElementById('total-more-area').className == 'hide'){
-            document.getElementById('total-more-area').className = 'show';
-            document.getElementById('total-more-button').textContent = 'Less bill info';
-        }else if(document.getElementById('total-more-area').className == 'show'){
-            
-            document.getElementById('total-more-area').className = 'hide';
-            document.getElementById('total-more-button').textContent = 'Full bill info';
-        }
-    };
-
-    document.getElementById('info-more-button').onclick = function(event){
-        if(document.getElementById('info-more-area').className == 'hide'){
-            document.getElementById('info-more-area').className = 'show';
-            document.getElementById('info-more-button').textContent = 'Less';
-        }else if(document.getElementById('info-more-area').className == 'show'){
-            
-            document.getElementById('info-more-area').className = 'hide';
-            document.getElementById('info-more-button').textContent = 'More';
-        }
-    };
-};
-
-document.getElementById('tax').oninput = function(event) {
+$(function(){
+    init();
     calculation();
-};
+});
 
-document.getElementById('accumulatedTotal').oninput = function(event) {
+$('#tax').on('input', function(event) {
     calculation();
-};
+});
 
-document.getElementById('numOfPeople').oninput = function(event) {
+$('#accumulatedTotal').on('input', function(event) {
     calculation();
-};
+});
 
-document.getElementById('tip').oninput = function(event) {
+$('numOfPeople').on('input', function(event) {
     calculation();
-};
+});
+
+$('#tip').on('input', function(event) {
+    calculation();
+});
