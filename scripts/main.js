@@ -30,19 +30,22 @@ function calcTax(total, tax) {
 }
 
 function calcTotalWithTax(total, finalTipWithTax, numOfPeople) {
-    return (total + finalTipWithTax) / numOfPeople;
+    return numOfPeople > 0 ? (total + finalTipWithTax) / numOfPeople : (total + finalTipWithTax) / 1;
 }
 
 function calcTotalWithoutTax(total, finalTipWithoutTax, numOfPeople) {
-    return (total + finalTipWithoutTax) / numOfPeople;
+    return numOfPeople > 0 ? (total + finalTipWithoutTax) / numOfPeople : (total + finalTipWithoutTax) / 1;
 }
+function checkIfNaN(num){
+    return isNaN(num) ? 0 : num;
+}
+
 /**
  *
  *  calculation()
  *  Overall calculation done with the application
  *
  **/
-
 function calculation() {
     /**
      *
@@ -54,20 +57,16 @@ function calculation() {
      *  tip - Tip percentage speicifed by the user. .01 to make the number a decimal number (eg 10% tip = 0.10)
      *
      **/
-    var total = parseFloat($('#accumulatedTotal').val());
-    var tax = parseFloat($('#tax').val() * 0.01);
-    var numOfPeople = parseInt($('#numOfPeople').val());
-    var tip = parseFloat($('#tip').val());
+    var total = checkIfNaN(parseFloat($('#accumulatedTotal').val()));
+    var tax = checkIfNaN(parseFloat($('#tax').val() * 0.01));
+    var numOfPeople = checkIfNaN(parseInt($('#numOfPeople').val()));
+    var tip = checkIfNaN(parseFloat($('#tip').val()));
 
     /**
     *
     *   Check to see if total field is empty
     *
     */
-    if(isNaN(total)){
-        console.log('total = 0');
-        total = 0;
-    }
 
     tip *= 0.01;
     console.log("Tax: " + tax);
