@@ -148,7 +148,7 @@ $('#accumulatedTotal').on('input', function(event) {
     calculation();
 });
 
-$('numOfPeople').on('input', function(event) {
+$('#numOfPeople').on('input', function(event) {
     calculation();
 });
 
